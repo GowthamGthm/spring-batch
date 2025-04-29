@@ -30,12 +30,12 @@ public class SpringBatchDemoApplication {
         try {
             Job job = context.getBean(args[2], Job.class);
             JobExecution jobExecution = jobLauncher.run(job, jobParameters);
+            log.info("JOB EXECUTION STATUS: {}" , jobExecution.getStatus());
         } catch (Exception e) {
             log.error("error in batch " , e);
         } finally {
             System.exit(SpringApplication.exit(context));
         }
-
 
     }
 

@@ -20,9 +20,9 @@ public class BatchConfig {
     PlatformTransactionManager transactionManager;
 
 
-    @Bean(name = "myBatchJobTaskletJob")
+    @Bean(name = "create_file_job_task_letjob")
     public Job myBatchJobTaskletJob() {
-        return new JobBuilder("myBatchJobTaskletJob", jobRepository)
+        return new JobBuilder("create_file_job_task_letjob", jobRepository)
                 .start(myBatchJobStep())
                 .build();
     }
