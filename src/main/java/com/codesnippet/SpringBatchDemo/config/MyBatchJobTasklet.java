@@ -52,7 +52,9 @@ public class MyBatchJobTasklet implements Tasklet {
         FileUtils.writeLines(file, lines);
 
         log.info("Batch Ended ");
-        return null;
+        executionContext.put("status", "SUCCESS");
+        return RepeatStatus.FINISHED;
 
     }
+
 }
