@@ -22,7 +22,7 @@ public class MyBatchJobTasklet implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-
+        log.info("ALL PROPS: {}", properties.toString());
 
         ExecutionContext executionContext = chunkContext.getStepContext().getStepExecution().getJobExecution().getExecutionContext();
         Map<String, Object> jobParameters = chunkContext.getStepContext().getJobParameters();

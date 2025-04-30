@@ -41,4 +41,12 @@ public class SftpProperties {
         return properties;
     }
 
+
+    @Override
+    public String toString() {
+        return "SftpProperties{" +
+                "properties=" + properties +
+                '}';
+    }
+
 }

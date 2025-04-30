@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.StepContribution;
@@ -74,11 +73,12 @@ class MyBatchJobTaskletTest {
         when(sftpProperties.getProperty("testjob.props3")).thenReturn("value3");
         when(sftpProperties.getProperty("testjob.props4")).thenReturn("value4");
         when(sftpProperties.getProperty("testjob.props5")).thenReturn("value5");
+        when(sftpProperties.toString()).thenReturn("ALL-VALUES-DUMMY_TO_STRING");
 
         // Mocking file writing
         File mockFile = mock(File.class);
 
-        try(var mockedFileUtils = mockStatic(FileUtils.class)) {
+        try (var mockedFileUtils = mockStatic(FileUtils.class)) {
             mockedFileUtils.when(() -> FileUtils.writeLines(eq(mockFile), anyList()))
                     .thenAnswer(invocation -> null);
         }
@@ -118,7 +118,7 @@ class MyBatchJobTaskletTest {
         // Mocking file writing
         File mockFile = mock(File.class);
 
-        try(var mockedFileUtils = mockStatic(FileUtils.class)) {
+        try (var mockedFileUtils = mockStatic(FileUtils.class)) {
             mockedFileUtils.when(() -> FileUtils.writeLines(eq(mockFile), anyList()))
                     .thenAnswer(invocation -> null);
         }
